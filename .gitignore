@@ -1,0 +1,5 @@
+discourse/
+gitlabhq/
+rails/
+
+.DS_Store
