@@ -1,0 +1,35 @@
+#codeship-1x
+bundle exec rake spec || true
+bundle exec rake jasmine:ci || true
+GROUP=1of8 bundle exec rake rake:cucumber || true
+GROUP=2of8 bundle exec rake rake:cucumber || true
+GROUP=3of8 bundle exec rake rake:cucumber || true
+GROUP=4of8 bundle exec rake rake:cucumber || true
+GROUP=5of8 bundle exec rake rake:cucumber || true
+GROUP=6of8 bundle exec rake rake:cucumber || true
+GROUP=7of8 bundle exec rake rake:cucumber || true
+GROUP=8of8 bundle exec rake rake:cucumber || true
+
+#codeship-2x1
+bundle exec rake spec || true
+bundle exec rake jasmine:ci || true
+GROUP=1of4 bundle exec rake rake:cucumber || true
+GROUP=2of4 bundle exec rake rake:cucumber || true
+#codeship-2x2
+GROUP=4of4 bundle exec rake rake:cucumber || true
+GROUP=3of4 bundle exec rake rake:cucumber || true
+
+#codeship-4x1
+GROUP=5of8 bundle exec rake rake:cucumber || true
+#codeship-4x2
+bundle exec rake spec || true
+bundle exec rake jasmine:ci || true
+GROUP=4of8 bundle exec rake rake:cucumber || true
+GROUP=7of8 bundle exec rake rake:cucumber || true
+#codeship-4x3
+GROUP=2of8 bundle exec rake rake:cucumber || true
+GROUP=1of8 bundle exec rake rake:cucumber || true
+#codeship-4x4
+GROUP=3of8 bundle exec rake rake:cucumber || true
+GROUP=6of8 bundle exec rake rake:cucumber || true
+GROUP=8of8 bundle exec rake rake:cucumber || true
