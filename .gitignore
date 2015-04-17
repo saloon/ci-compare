@@ -1,5 +1,7 @@
-discourse/
-gitlabhq/
-rails/
+discourse/*
+gitlabhq/*
+diaspora/*
+rails/*
+private/*
 
 .DS_Store

@@ -1,0 +1,17 @@
+# codeship-1x
+GEM=railties ruby ci/travis.rb
+GEM=ap ruby ci/travis.rb
+GEM=am,amo,as,av,aj ruby ci/travis.rb
+###GEM=ar:mysql ruby ci/travis.rb
+###GEM=ar:mysql2 ruby ci/travis.rb
+GEM=ar:sqlite3 ruby ci/travis.rb
+GEM=ar:postgresql ruby ci/travis.rb
+#GEM=aj:integration ruby ci/travis.rb
+
+# codeship-2x-1
+GEM=railties ruby ci/travis.rb
+GEM=ar:sqlite3 ruby ci/travis.rb
+# codeship-2x-2
+GEM=ar:postgresql ruby ci/travis.rb
+GEM=am,amo,as,av,aj ruby ci/travis.rb
+GEM=ap ruby ci/travis.rb

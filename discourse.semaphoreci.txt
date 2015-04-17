@@ -1,0 +1,39 @@
+# semaphireci-setup
+bundle install --deployment --path vendor/bundle
+bundle exec rake db:create
+bundle exec rake db:structure:load
+
+# semaphoreci-1x
+bundle exec rspec -P "spec/components/**/*_spec.rb" || true
+bundle exec rspec -P "spec/models/**/*_spec.rb" || true
+bundle exec rspec -P "spec/controllers/**/*_spec.rb" || true
+bundle exec rspec -P "spec/fixtures/**/*_spec.rb" || true
+bundle exec rspec -P "spec/services/**/*_spec.rb" || true
+bundle exec rspec -P "spec/jobs/**/*_spec.rb" || true
+bundle exec rspec -P "spec/{mailers,integration,fabricators,serializers,support,helpers,phantom_js,integrity,views}/**/*_spec.rb" || true
+bundle exec rake plugin:spec || true
+bundle exec rake qunit:test || true
+
+# semaphoreci-2x-1
+bundle exec rspec -P "spec/components/**/*_spec.rb" || true
+bundle exec rspec -P "spec/controllers/**/*_spec.rb" || true
+bundle exec rspec -P "spec/services/**/*_spec.rb" || true
+bundle exec rspec -P "spec/jobs/**/*_spec.rb" || true
+bundle exec rake plugin:spec || true
+# semaphoreci-2x-2
+bundle exec rspec -P "spec/models/**/*_spec.rb" || true
+bundle exec rspec -P "spec/{mailers,integration,fabricators,serializers,support,helpers,phantom_js,integrity,views}/**/*_spec.rb" || true
+bundle exec rake qunit:test || true
+
+# semaphoreci-4x-1
+bundle exec rspec -P "spec/components/**/*_spec.rb" || true
+bundle exec rspec -P "spec/services/**/*_spec.rb" || true
+# semaphoreci-4x-2
+bundle exec rspec -P "spec/controllers/**/*_spec.rb" || true
+bundle exec rspec -P "spec/{mailers,integration,fabricators,serializers,support,helpers,phantom_js,integrity,views}/**/*_spec.rb" || true
+# semaphoreci-4x-3
+bundle exec rspec -P "spec/models/**/*_spec.rb" || true
+bundle exec rspec -P "spec/jobs/**/*_spec.rb" || true
+# semaphoreci-4x-4
+bundle exec rake qunit:test || true
+bundle exec rake plugin:spec || true
