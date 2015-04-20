@@ -1,0 +1,45 @@
+#semaphore-setup
+bundle install
+export RAILS_ENV=test
+sed -i 's/*common/*postgres_travis/' config/database.yml
+bundle exec rake db:create
+bundle exec rake db:migrate
+bundle exec rake db:test:prepare
+bundle exec rake assets:precompile
+bundle exec rake tests:generate_fixtures
+
+#semaphore-1x
+bundle exec rake spec || true
+bundle exec rake jasmine:ci || true
+GROUP=1of8 bundle exec rake rake:cucumber || true
+GROUP=2of8 bundle exec rake rake:cucumber || true
+GROUP=3of8 bundle exec rake rake:cucumber || true
+GROUP=4of8 bundle exec rake rake:cucumber || true
+GROUP=5of8 bundle exec rake rake:cucumber || true
+GROUP=6of8 bundle exec rake rake:cucumber || true
+GROUP=7of8 bundle exec rake rake:cucumber || true
+GROUP=8of8 bundle exec rake rake:cucumber || true
+
+#semaphore-2x1
+bundle exec rake spec || true
+bundle exec rake jasmine:ci || true
+GROUP=1of4 bundle exec rake rake:cucumber || true
+GROUP=2of4 bundle exec rake rake:cucumber || true
+#semaphore-2x2
+GROUP=4of4 bundle exec rake rake:cucumber || true
+GROUP=3of4 bundle exec rake rake:cucumber || true
+
+#semaphore-4x1
+GROUP=5of8 bundle exec rake rake:cucumber || true
+#semaphore-4x2
+bundle exec rake spec || true
+bundle exec rake jasmine:ci || true
+GROUP=4of8 bundle exec rake rake:cucumber || true
+GROUP=7of8 bundle exec rake rake:cucumber || true
+#semaphore-4x3
+GROUP=2of8 bundle exec rake rake:cucumber || true
+GROUP=1of8 bundle exec rake rake:cucumber || true
+#semaphore-4x4
+GROUP=3of8 bundle exec rake rake:cucumber || true
+GROUP=6of8 bundle exec rake rake:cucumber || true
+GROUP=8of8 bundle exec rake rake:cucumber || true
